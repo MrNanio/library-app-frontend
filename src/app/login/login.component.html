@@ -1,0 +1,55 @@
+<div class="page-holder align-items-center py-4 bg-gray-100 vh-100">
+  <div class="container">
+
+    <div class="row align-items-center">
+      <div class="col-lg-6 px-lg-4">
+        <div class="card">
+          <div class="card-header px-lg-5">
+            <div class="card-heading text-primary">Login</div>
+          </div>
+          <div class="card-body p-lg-5">
+            <h3 class="mb-4">Hi, welcome back!</h3>
+            <p class="text-muted text-sm mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore.</p>
+
+            <form class="mb-4"
+                  autocomplete="off"
+                  (ngSubmit)="checkLogin()">
+              <div class="form-floating mb-3">
+                <input class="form-control" [(ngModel)]="email" name="username" id="username" type="email"
+                       placeholder="name@example.com"
+                       required>
+                <label for="username">Email address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input class="form-control" [(ngModel)]="password" name="password" id="floatingPasswordLogin"
+                       type="password" placeholder="Password" required>
+                <label for="floatingPasswordLogin">Password</label>
+              </div>
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" name="remember" id="remember">
+                <label class="form-check-label" for="remember">Remember me</label>
+              </div>
+              <button class="btn btn-primary" type="submit">Login</button>
+            </form>
+
+          </div>
+          <div class="card-footer px-lg-5 py-lg-4">
+            <div class="text-sm text-muted">Don't have an account? <a [routerLink]="['/register']">Register</a>.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 col-xl-5 ms-xl-auto px-lg-4 text-center text-primary">
+        <div class="img-fluid mb-2">
+          <img src="/assets/images/main_page.png" alt="image" width="400"
+               height="400">
+        </div>
+        <h1 class="mb-4">myLibrary </h1>
+        <h2 class="d-none d-lg-inline h3">books management.</h2>
+        <p class="lead text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+          incididunt ut labore.</p>
+      </div>
+    </div>
+  </div>
+</div>
