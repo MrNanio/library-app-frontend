@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import {
   HttpRequest,
@@ -20,6 +19,7 @@ export class BasicAuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     // get jwt
     const jwt = this.authService.jwtValue;
+    console.log(jwt);
     // check if user is already logged in
     const isLoggedIn = jwt && jwt.jwtToken;
     // check if url is correct

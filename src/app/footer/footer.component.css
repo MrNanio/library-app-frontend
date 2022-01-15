@@ -1,0 +1,66 @@
+.footer {
+  background: rgb(155, 157, 169) !important;
+  color: white;
+  padding: 1rem 0 2rem;
+}
+
+.footer-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.col {
+  width: auto;
+  text-align: center;
+}
+
+.col-item {
+  margin: 0 auto;
+}
+
+h1 {
+  letter-spacing: 0.2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+hr.socket {
+  width: 100%;
+  border-top: 0.2rem solid #dae4f0;
+  margin: 0.8rem 0;
+}
+
+i {
+  font-size: 20px;
+}
+
+@media screen and (max-width: 1028px) {
+  .footer {
+    font-size: 1.7rem;
+  }
+
+}
+
+@media screen and (max-width: 800px) {
+  .footer {
+    font-size: 1.1rem;
+  }
+
+}
+
+@media screen and (max-width: 640px) {
+  .footer {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .footer {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (max-width: 320px) {
+}
