@@ -14,19 +14,32 @@
               tempor incididunt ut labore.</p>
             <form class="mb-4"
                   autocomplete="off"
+                  [formGroup]="form"
                   (ngSubmit)="onSubmit()">
-              <!--              <div class="form-floating mb-3">-->
-              <!--                <input class="form-control" id="username" type="email" placeholder="name@example.com" required>-->
-              <!--                <label for="username">Username</label>-->
-              <!--              </div>-->
               <div class="form-floating mb-3">
-                <input class="form-control" [(ngModel)]="email" name="username" id="floatingInput" type="email"
-                       placeholder="name@example.com" required>
+                <input class="form-control"
+                       id="floatingInput"
+                       type="email"
+                       placeholder="name@example.com" required
+                       formControlName="email"
+                       [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                  <div *ngIf="f['email'].errors['required']">mail nie moze być pusty</div>
+                </div>
                 <label for="floatingInput">Email address</label>
               </div>
+
               <div class="form-floating mb-3">
-                <input class="form-control" [(ngModel)]="password" name="password" id="floatingPassword" type="password"
-                       placeholder="Password" required>
+                <input class="form-control"
+                       name="password"
+                       id="floatingPassword"
+                       type="password"
+                       formControlName="password"
+                       placeholder="Password" required
+                       [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                  <div *ngIf="f['password'].errors['required']">hasło nie moze być pusty</div>
+                </div>
                 <label for="floatingPassword">Password</label>
               </div>
               <div class="form-check mb-3">

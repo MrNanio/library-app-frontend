@@ -12,7 +12,7 @@ export class BookListComponent implements OnInit {
 
   books!: Book[];
 
-  displayedColumns: string[] = ['category', 'title', 'author', 'action'];
+  displayedColumns: string[] = ['author', 'title', 'category', 'action'];
 
   constructor(
     private bookService: BookService,
@@ -34,7 +34,7 @@ export class BookListComponent implements OnInit {
   }
 
   updateBook(id: number) {
-    this.router.navigate(['update-book', id]);
+    this.router.navigate(['book/book-update', id]);
   }
 
   deleteBook(id: number) {

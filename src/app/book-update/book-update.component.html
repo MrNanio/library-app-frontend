@@ -1,1 +1,106 @@
-<p>book-update works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light px-4">
+  <a [routerLink]="['/book']" role="button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left"
+         viewBox="0 0 16 16">
+      <path fill-rule="evenodd"
+            d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"/>
+    </svg>
+  </a>
+</nav>
+<div class="row pt-5 mb-5">
+  <div class="card col-md-6 offset-md-3 offset-md-3 pt-3">
+    <div class="row">
+      <h3 class="text-center"> edytuj pozycje biblioteczną </h3>
+      <hr />
+      <div class="card-body">
+
+        <form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <label> tytuł</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="title"
+                   [value]="book.title"
+                   [class]="{ 'is-invalid': submitted && f['title'].errors }"
+                   id="title"
+                   name="title">
+            <div *ngIf="submitted && f['title'].errors" class="invalid-feedback">
+              <div *ngIf="f['title'].errors['required']">Tytuł nie moze być pusty</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label> autor</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="author"
+                   id="author"
+                   [value]="book.author"
+                   [class]="{ 'is-invalid': submitted && f['author'].errors }"
+                   name="author">
+            <div *ngIf="submitted && f['author'].errors" class="invalid-feedback">
+              <div *ngIf="f['author'].errors['required']">Autor nie może być puste</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label> gatunek</label>
+            <input type="text"
+                   class="form-control"
+                   id="category"
+                   formControlName="category"
+                   [value]="book.category"
+                   [class]="{ 'is-invalid': submitted && f['category'].errors }"
+                   name="category">
+            <div *ngIf="submitted && f['category'].errors" class="invalid-feedback">
+              <div *ngIf="f['category'].errors['required']">Kategoria nie może być pusta</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label> rok wydania</label>
+            <input type="text"
+                   class="form-control"
+                   formControlName="publishYear"
+                   [value]="book.publishYear"
+                   [class]="{ 'is-invalid': submitted && f['publishYear'].errors }"
+                   name="publishYear">
+            <div *ngIf="submitted && f['publishYear'].errors" class="invalid-feedback">
+              <div *ngIf="f['publishYear'].errors['required']">Rok publikacji nie może być pusty</div>
+            </div>
+          </div>
+          <br/>
+          <button class="btn btn-success" type="submit">zapisz</button>
+        </form>
+<!--        <form (ngSubmit)="onSubmit()">-->
+
+<!--          <div class="form-group">-->
+<!--            <label> tytuł</label>-->
+<!--            <input type="text" class="form-control" id="title" [(ngModel)]="book.title"-->
+<!--                   name="title">-->
+<!--          </div>-->
+
+<!--          <div class="form-group">-->
+<!--            <label> autor</label>-->
+<!--            <input type="text" class="form-control" id="author" [(ngModel)]="book.author"-->
+<!--                   name="author">-->
+<!--          </div>-->
+
+<!--          <div class="form-group">-->
+<!--            <label> rok publikacji</label>-->
+<!--            <input type="text" class="form-control" id="publishYear" [(ngModel)]="book.publishYear"-->
+<!--                   name="publishYear">-->
+<!--          </div>-->
+<!--          <div class="form-group">-->
+<!--            <label> gatunek</label>-->
+<!--            <input type="text" class="form-control" id="category" [(ngModel)]="book.category"-->
+<!--                   name="category">-->
+<!--          </div>-->
+<!--          <br />-->
+<!--          <button class="btn btn-success" type="submit">Submit</button>-->
+<!--        </form>-->
+      </div>
+    </div>
+  </div>
+</div>

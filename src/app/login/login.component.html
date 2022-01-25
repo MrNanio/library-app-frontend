@@ -14,23 +14,41 @@
 
             <form class="mb-4"
                   autocomplete="off"
+                  [formGroup]="form"
                   (ngSubmit)="checkLogin()">
               <div class="form-floating mb-3">
-                <input class="form-control" [(ngModel)]="email" name="username" id="username" type="email"
-                       placeholder="name@example.com"
-                       required>
-                <label for="username">Email address</label>
+                <input class="form-control"
+                       id="floatingInput"
+                       type="email"
+                       placeholder="name@example.com" required
+                       formControlName="email"
+                       [ngClass]="{ 'is-invalid': submitted && f['email'].errors }">
+                <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                  <div *ngIf="f['email'].errors['required']">mail nie moze być pusty</div>
+                </div>
+                <label for="floatingInput">Email address</label>
               </div>
+
               <div class="form-floating mb-3">
-                <input class="form-control" [(ngModel)]="password" name="password" id="floatingPasswordLogin"
-                       type="password" placeholder="Password" required>
-                <label for="floatingPasswordLogin">Password</label>
+                <input class="form-control"
+                       name="password"
+                       id="floatingPassword"
+                       type="password"
+                       formControlName="password"
+                       placeholder="Password" required
+                       [ngClass]="{ 'is-invalid': submitted && f['password'].errors }">
+                <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
+                  <div *ngIf="f['password'].errors['required']">hasło nie moze być pusty</div>
+                </div>
+                <label for="floatingPassword">Password</label>
               </div>
               <div class="form-check mb-3">
-                <input class="form-check-input" type="checkbox" name="remember" id="remember">
-                <label class="form-check-label" for="remember">Remember me</label>
+                <input class="form-check-input" type="checkbox" name="agree" id="agree">
+                <label class="form-check-label" for="agree">I agree with the <a href="#">Terms & Conditions</a>.</label>
               </div>
-              <button class="btn btn-primary" type="submit">Login</button>
+              <div class="form-group">
+                <button class="btn btn-primary" id="regidter" type="submit" name="registerSubmit">Register</button>
+              </div>
             </form>
 
           </div>

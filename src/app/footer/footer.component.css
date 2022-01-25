@@ -1,7 +1,6 @@
 .footer {
-  background: rgb(155, 157, 169) !important;
+  background: rgb(68, 66, 66) !important;
   color: white;
-  padding: 1rem 0 2rem;
 }
 
 .footer-row {
@@ -11,18 +10,24 @@
   flex-direction: column;
 }
 
+.footer-brand{
+  font-family: 'JetBrains Mono', monospace;
+}
+
 .col {
+  font-family: 'Lobster', cursive;
   width: auto;
   text-align: center;
 }
 
 .col-item {
+  font-family: 'Lobster', cursive;
   margin: 0 auto;
 }
 
 h1 {
   letter-spacing: 0.2rem;
-  font-weight: 700;
+  font-weight: 500;
   margin-bottom: 0.5rem;
 }
 

@@ -1,6 +1,7 @@
 import {AuthService} from "../service/auth.service";
 import { Component, OnInit, Input } from '@angular/core';
 import {Router} from '@angular/router';
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -9,28 +10,46 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  email = ''
-  password = ''
-  invalidLogin = false
+  form: FormGroup = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
+  });
+  submitted = false;
 
   @Input() error: string | null | undefined;
 
-  constructor(private authService: AuthService, private router: Router) {
-
+  constructor(private authService: AuthService,
+              private formBuilder: FormBuilder,
+              private router: Router) {
   }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group(
+      {
+        email: ['', Validators.required],
+        password: ['', Validators.required],
+      }
+    );
+  }
 
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
   }
 
   checkLogin() {
-    (this.authService.login(this.email, this.password).subscribe(
+
+    this.submitted = true;
+
+    if (this.form.invalid) {
+      console.log("invalid");
+      return;
+    }
+
+    (this.authService.login(this.f['email'].value, this.f['password'].value).subscribe(
         data => {
           this.router.navigate(['book'])
-          this.invalidLogin = false
         },
         error => {
-          this.invalidLogin = true
           this.error = error.message;
         }
       )

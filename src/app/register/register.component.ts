@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AuthService} from "../service/auth.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {first} from "rxjs";
+import {AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-register',
@@ -10,21 +11,43 @@ import {first} from "rxjs";
 })
 export class RegisterComponent implements OnInit {
 
-  email = ''
-  password = ''
-
   @Input() error: string | null | undefined;
 
+  form: FormGroup = new FormGroup({
+    email: new FormControl(''),
+    password: new FormControl(''),
+  });
+  submitted = false;
+
   constructor(private authService: AuthService,
+              private formBuilder: FormBuilder,
               private router: Router,
               private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+    this.form = this.formBuilder.group(
+      {
+        email: ['', Validators.required],
+        password: ['', Validators.required],
+      }
+    );
+  }
+
+  get f(): { [key: string]: AbstractControl } {
+    return this.form.controls;
   }
 
   onSubmit() {
-    this.authService.register(this.email, this.password)
+
+    this.submitted = true;
+
+    if (this.form.invalid) {
+      console.log("invalid");
+      return;
+    }
+
+    this.authService.register(this.f['email'].value, this.f['password'].value)
       .pipe(first())
       .subscribe(
         data => {

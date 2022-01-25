@@ -7,6 +7,7 @@ import {AuthGuard} from "./auth/auth.guard";
 import {BookCreateComponent} from "./book-create/book-create.component";
 import {BookListComponent} from "./book-list/book-list.component";
 import {BookDetailsComponent} from "./book-details/book-details.component";
+import {BookUpdateComponent} from "./book-update/book-update.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
       {path: '', component: BookListComponent},
       {path: 'create', component: BookCreateComponent},
       {path: 'book-details/:id', component: BookDetailsComponent},
+      {path: 'book-update/:id', component: BookUpdateComponent},
     ],
   },
 ];
